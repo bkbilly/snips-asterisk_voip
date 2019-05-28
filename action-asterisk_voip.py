@@ -7,6 +7,10 @@ from hermes_python.ffi.utils import MqttOptions
 from hermes_python.ontology import *
 import io
 import toml
+from pydub import AudioSegment
+from pydub.playback import play
+
+
 
 CONFIGURATION_ENCODING_FORMAT = "utf-8"
 CONFIG_INI = "config.ini"
@@ -74,6 +78,8 @@ def action_wrapper(hermes, intentMessage, conf):
     else:
         hermes.publish_end_session(intentMessage.session_id, "Can't understand this person")
     
+    song = AudioSegment.from_wav("endcall.wav")
+    play(song)
     print('finished execution')
     
 
