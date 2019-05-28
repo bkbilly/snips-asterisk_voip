@@ -51,10 +51,11 @@ def action_wrapper(hermes, intentMessage, conf):
                 if not line:
                     break
                 print(line)
-                if 'answered' in line.lower():
+                line = line.lower()
+                if 'answered' in line:
                     hasAnswered = True
                     print('--> The Call has been Answered')
-                if 'call ended' in line.lower() or 'call terminated' in line.lower():
+                if 'call ended' in line or 'call terminated' in line or 'call failed' in line or 'not found' in line:
                     hasEnded = True
                     print('--> The Call has Ended')
                     break
